@@ -10,7 +10,10 @@ public class SizeInBytes {
         printBytes(size);
 
     }
-
+    
+    /*
+    * Процедура, которая форматирует и выводит на экран заданный размер в байтах в человекочитаемом виде.
+    */
     public static void printBytes(float size){
 
         long b, kb, mb, gb, tb, pb;
