@@ -15,11 +15,18 @@ public class Menu {
 
     public static Scanner sc = new Scanner(System.in);
 
+    /**
+     * Добавление новой задачи на доску.
+     *
+     * @param taskBoard доска
+     * @throws IllegalArgumentException исключение в виде сообщения пользователю о неверно введеном коде задачи
+     */
     public static void addTask(TaskBoard taskBoard) throws IllegalArgumentException{
         System.out.println("Новая задача под кодом ");
         int id = sc.nextInt();
 
         System.out.println("Наименование: ");
+        String str = sc.nextLine();
         String name = sc.nextLine();
 
         System.out.println("Описание: ");
@@ -29,34 +36,38 @@ public class Menu {
         String performerName = sc.nextLine();
         System.out.println("Возраст исполнителя: ");
         int performerAge = sc.nextInt();
-        System.out.println("Пол исполнителя (м/ж): ");
-        String performerSex;
-        try {
-            performerSex = sc.nextLine();
-        }
-        catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Допустимы только следующие строковые значения: 'м' и 'ж'");
-        }
+        System.out.println("Пол исполнителя (1 - мужчина/ 2 - женщина): ");
+        int performerSex = sc.nextInt();
 
         Gender performerGender;
-        if (performerSex == "м") {
+        if (performerSex == 1)
             performerGender = Gender.MALE;
-        }
-        else if (performerSex == "ж") {
+        else if (performerSex == 2)
             performerGender = Gender.FEMALE;
-        }
-        else throw new IllegalArgumentException("Недопустимое значение!");
+        else
+            throw new IllegalArgumentException("Недопустимое значение!");
 
         Performer performer = new Performer(performerName, performerAge, performerGender);
         taskBoard.addTask(id, name, description, performer);
     }
 
+    /**
+     * Поиск задачи на доске.
+     *
+     * @param taskBoard доска
+     */
     public static void search(TaskBoard taskBoard) {
         System.out.println("Введите код искомой задачи: ");
         int id = sc.nextInt();
         System.out.println(taskBoard.search(id));
     }
 
+    /**
+     * Изменение задачи на доске.
+     *
+     * @param taskBoard доска.
+     * @throws IllegalArgumentException исключение в виде сообщения пользователю о неверно введеном коде задачи
+     */
     public static void change(TaskBoard taskBoard) throws IllegalArgumentException {
         System.out.println("Для изменения данных о задаче введите ее код: ");
         int id = sc.nextInt();
@@ -66,71 +77,81 @@ public class Menu {
                 "1 - наименование\n" +
                 "2 - описание\n" +
                 "3 - исполнителя\n" +
-                "4 - статус\n");
+                "4 - статус");
         int change = sc.nextInt();
+        String str;
 
-        switch (change) {
+        switch(change) {
             case 1:
                 System.out.println("Новое наименование: ");
+                str = sc.nextLine();
                 String name = sc.nextLine();
                 task.setName(name);
                 break;
             case 2:
                 System.out.println("Новое описание: ");
+                str = sc.nextLine();
                 String description = sc.nextLine();
                 task.setDescription(description);
                 break;
             case 3: {
                 System.out.println("Имя исполнителя: ");
+                str = sc.nextLine();
                 String performerName = sc.nextLine();
                 System.out.println("Возраст исполнителя: ");
                 int performerAge = sc.nextInt();
-                System.out.println("Пол исполнителя (м/ж): ");
-                String performerSex;
-                try {
-                    performerSex = sc.nextLine();
-                }
-                catch (IllegalArgumentException e) {
-                    throw new IllegalArgumentException("Допустимы только следующие строковые значения: 'м' и 'ж'");
-                }
+                System.out.println("Пол исполнителя (1 - мужчина/ 2 - женщина): ");
+                int performerSex = sc.nextInt();
 
                 Gender performerGender;
-                if (performerSex == "м") {
+                if (performerSex == 1)
                     performerGender = Gender.MALE;
-                }
-                else if (performerSex == "ж") {
+                else if (performerSex == 2)
                     performerGender = Gender.FEMALE;
-                }
-                else throw new IllegalArgumentException("Недопустимое значение!");
+                else
+                    throw new IllegalArgumentException("Недопустимое значение!");
 
                 Performer performer = new Performer(performerName, performerAge, performerGender);
                 task.setPerformer(performer);
+                break;
             }
             case 4:
-                System.out.println("Новый статус:");
-                System.out.println("1 - Назначенная\n2-В работе\n3-Выполнено");
-                int statusNumber = sc.nextInt();
+                System.out.println("Новый статус (" +
+                        "1 - Назначенная/ " +
+                        "2 - В работе/ " +
+                        "3 - Выполнено): ");
+                int statNumber = sc.nextInt();
+
+
                 StatusTask status;
-                if (statusNumber == 1) {
+                if (statNumber == 1)
                     status = StatusTask.TODO;
-                }
-                else if (statusNumber == 2) {
+                else if (statNumber == 2)
                     status = StatusTask.IN_PROGRESS;
-                }
-                else if (statusNumber == 3) {
+                else if (statNumber == 3)
                     status = StatusTask.DONE;
-                }
-                else throw new IllegalArgumentException("Недопустимое значение!");
+                else
+                    throw new IllegalArgumentException("Недопустимое значение!");
 
                 task.setStatus(status);
+                break;
             default:
                 throw new IllegalArgumentException("Недопустимое значение!");
         }
     }
 
+    /**
+     * Удаление задачи с доски.
+     *
+     * @param taskBoard доска
+     */
     public static void deleteTask(TaskBoard taskBoard) {
         System.out.println("Введите код удаляемой задачи: ");
         int id = sc.nextInt();
         taskBoard.deleteTask(id);
+    }
+
+    public static void allTask(TaskBoard taskBoard) {
+        System.out.println(taskBoard.toString());
     }
 }
