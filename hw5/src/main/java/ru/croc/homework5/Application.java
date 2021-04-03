@@ -6,21 +6,24 @@ import ru.croc.homework5.task.TaskBoard;
 import java.io.*;
 import java.util.Scanner;
 
+/**
+ * Приложение.
+ */
 public class Application {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
 
-        File f = new File("file.txt");
+        File file = new File("file.txt");
         FileInputStream fileInputStream;
         ObjectInputStream objectInputStream;
         TaskBoard taskBoard = new TaskBoard();
         try {
-            if (f.length() == 0) {
-                f.createNewFile();
+            if (file.length() == 0) {
+                file.createNewFile();
             }
             else {
-                fileInputStream = new FileInputStream("file.txt");
+                fileInputStream = new FileInputStream(file);
                 objectInputStream = new ObjectInputStream(fileInputStream);
                 taskBoard = (TaskBoard) objectInputStream.readObject();
             }
@@ -35,7 +38,8 @@ public class Application {
             System.out.println("1 - Добавить задачу\n" +
                     "2 - Редактировать задачу\n" +
                     "3 - Просмотреть задачу\n" +
-                    "4 - Удалить задачу" );
+                    "4 - Удалить задачу\n" +
+                    "5 - посмотреть все задачи" );
             int choice = sc.nextInt();
             switch(choice) {
                 case 1:
@@ -49,26 +53,20 @@ public class Application {
                     break;
                 case 4:
                     Menu.deleteTask(taskBoard);
+                    break;
+                case 5:
+                    Menu.allTask(taskBoard);
+                    break;
                 default:
-                    System.out.println("Введите номер от 1 до 4");
+                    System.out.println("Введите номер от 1 до 5");
             }
 
             System.out.println("Нажмите 0 чтобы продолжить");
             start = sc.nextInt();
         }
-        FileOutputStream fileOutput;
-        fileOutput = new FileOutputStream("file.txt");
-        ObjectOutputStream objectOutputStream = null;
-        try {
-            objectOutputStream = new ObjectOutputStream(fileOutput);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            objectOutputStream.writeObject(taskBoard);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        FileOutputStream fileOutput = new FileOutputStream("file.txt");
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutput);
+        objectOutputStream.writeObject(taskBoard);
+        objectOutputStream.close();
     }
 }
