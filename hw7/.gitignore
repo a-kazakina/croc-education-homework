@@ -1,0 +1,5 @@
+.idea
+target/
+zoo_db/
+derby.log
+*.iml
