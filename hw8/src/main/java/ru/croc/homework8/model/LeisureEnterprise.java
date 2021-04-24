@@ -5,23 +5,32 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.sql.Time;
 import java.util.Objects;
 
+/**
+ * Досуговые предприятия.
+ */
 public class LeisureEnterprise {
 
+    /** Код. */
     @XmlTransient
     private Integer id;
 
+    /** Наименование. */
     @XmlElement ()
     private String name;
 
+    /** Время открытия. */
     @XmlTransient
     private Time timeOpen;
 
+    /** Время закрытия. */
     @XmlTransient
     private Time timeClose;
 
+    /** Директор. */
     @XmlTransient
     private String director;
 
+    /** Адрес. */
     @XmlElement (name = "description")
     private String address;
 

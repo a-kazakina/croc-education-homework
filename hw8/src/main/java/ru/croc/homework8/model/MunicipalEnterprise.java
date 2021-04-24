@@ -7,23 +7,30 @@ import java.util.Objects;
 
 public class MunicipalEnterprise {
 
+    /** Код. */
     @XmlTransient
     private Integer id;
 
-    @XmlElement()
+    /** Наименование. */
+    @XmlElement ()
     private String name;
 
+    /** Время открытия. */
     @XmlTransient
     private Time timeOpen;
 
+    /** Время закрытия. */
     @XmlTransient
     private Time timeClose;
 
+    /** Директор. */
     @XmlTransient
     private String director;
 
+    /** Адрес. */
     @XmlElement (name = "description")
     private String address;
+
 
     public MunicipalEnterprise() {}
     public MunicipalEnterprise(String name, String address) {
