@@ -1,29 +1,25 @@
-<group_films>
-    <films>
-        <film>
-            <title>Фильм 1</title>
+<enterprises>
+    <municipal_enterprises>
+        <enterprise>
+            <name>Объект 1</name>
             <description>Описание 1</description>
-            <screenwriters>
-                <screenwriter name="Человек 1"/>
-                <screenwriter name="Человек 2"/>
-            </screenwriters>
-            <directors>
-                <director name="Человек 1"/>
-                <director name="Человек 3"/>
-            </directors>
-        </film>
-        <film>
-            <title>Фильм 2</title>
+        </enterprise>
+
+        <enterprise>
+            <name>Объект 2</name>
             <description>Описание 2</description>
-            <screenwriters>
-                <screenwriter name="Человек 3"/>
-                <screenwriter name="Человек 2"/>
-            </screenwriters>
-            <directors>
-                <director name="Человек 2"/>
-                <director name="Человек 4"/>
-                <director name="Человек 3"/>
-            </directors>
-        </film>
-    </films>
-</group_films>
+        </enterprise>
+    </municipal_enterprises>
+
+    <leisure_enterprises>
+        <enterprise>
+            <name>Объект 3</name>
+            <description>Описание 3</description>
+        </enterprise>
+
+        <enterprise>
+            <name>Объект 4</name>
+            <description>Описание 4</description>
+        </enterprise>
+    </leisure_enterprises>
+</enterprises>

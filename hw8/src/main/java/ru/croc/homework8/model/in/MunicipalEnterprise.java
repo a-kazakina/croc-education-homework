@@ -1,45 +1,35 @@
-package ru.croc.homework8.model;
+package ru.croc.homework8.model.in;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlTransient;
 import java.sql.Time;
-import java.util.Objects;
 
 /**
- * Досуговые предприятия.
+ * Муниципальное предприятие.
  */
-public class LeisureEnterprise {
+public class MunicipalEnterprise {
 
     /** Код. */
-    @XmlTransient
     private Integer id;
 
     /** Наименование. */
-    @XmlElement ()
     private String name;
 
     /** Время открытия. */
-    @XmlTransient
     private Time timeOpen;
 
     /** Время закрытия. */
-    @XmlTransient
     private Time timeClose;
 
     /** Директор. */
-    @XmlTransient
     private String director;
 
     /** Адрес. */
-    @XmlElement (name = "description")
     private String address;
 
-    public LeisureEnterprise(){}
-    public LeisureEnterprise(String name, String address) {
+    public MunicipalEnterprise(String name, String address) {
         this.name = name;
         this.address = address;
     }
-    public LeisureEnterprise(Integer id, String name, Time timeOpen, Time timeClose, String director, String address) {
+    public MunicipalEnterprise(Integer id, String name, Time timeOpen, Time timeClose, String director, String address) {
         this.id = id;
         this.name = name;
         this.timeOpen = timeOpen;
@@ -94,18 +84,5 @@ public class LeisureEnterprise {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LeisureEnterprise that = (LeisureEnterprise) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(timeOpen, that.timeOpen) && Objects.equals(timeClose, that.timeClose) && Objects.equals(director, that.director) && Objects.equals(address, that.address);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, timeOpen, timeClose, director, address);
     }
 }

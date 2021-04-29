@@ -1,0 +1,14 @@
+<enterprises>
+    <leisure_enterprises>
+        <l_enterprise>
+            <name>Предприятие1</name>
+            <description>Адрес: Краснодар, Красная 1, директор: Иванов</description>
+        </l_enterprise>
+    </leisure_enterprises>
+    <municipal_enterprises>
+        <m_enterprise>
+            <name>Предприятие3</name>
+            <description>Адрес: Краснодар, Красная 3, директор: Сидоров</description>
+        </m_enterprise>
+    </municipal_enterprises>
+</enterprises>

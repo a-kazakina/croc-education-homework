@@ -3,8 +3,8 @@ package ru.croc.homework8.repository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.croc.homework8.dbprovider.DataSourceProvider;
-import ru.croc.homework8.model.LeisureEnterprise;
-import ru.croc.homework8.model.MunicipalEnterprise;
+import ru.croc.homework8.model.in.LeisureEnterprise;
+import ru.croc.homework8.model.in.MunicipalEnterprise;
 
 import java.io.IOException;
 import java.sql.SQLException;
